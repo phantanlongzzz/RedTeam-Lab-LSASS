@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Game Online Việt Nam - Tải Game</title>
+
+    <meta name="description"
+          content="Tải game, hướng dẫn cài đặt và yêu cầu hệ thống.">
+
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #222;
+            background: #f2f2f2;
+
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        select {
+            font-family: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================================================
+           TOP BAR
+        ========================================================= */
+
+        .topbar {
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+
+            background: #111;
+            color: #aaa;
+
+            border-bottom: 1px solid #272727;
+        }
+
+        .topbar-inner {
+            width: min(1200px, 92%);
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-small {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .account {
+            display: flex;
+            gap: 4px;
+        }
+
+        .account a {
+            padding: 7px 14px;
+
+            color: #ddd;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: .2s;
+        }
+
+        .account a:hover {
+            color: #ef233c;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: #171717;
+
+            box-shadow:
+                0 4px 20px rgba(0,0,0,.25);
+        }
+
+        .header-inner {
+            width: min(1400px, 96%);
+            height: 82px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: stretch;
+        }
+
+        .logo {
+            width: 230px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 28px;
+
+            background: #111;
+
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -1px;
+
+            color: #fff;
+        }
+
+        .logo span {
+            color: #ed1c24;
+        }
+
+        .logo small {
+            display: block;
+
+            margin-left: 8px;
+
+            color: #777;
+
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+
+        .nav {
+            display: flex;
+            flex: 1;
+
+            overflow: hidden;
+        }
+
+        .nav a {
+            position: relative;
+
+            min-width: 105px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 15px;
+
+            color: #c8c8c8;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            white-space: nowrap;
+
+            transition:
+                background .2s,
+                color .2s;
+        }
+
+        .nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: 0;
+
+            width: 0;
+            height: 3px;
+
+            background: #ed1c24;
+
+            transform: translateX(-50%);
+
+            transition: width .25s;
+        }
+
+        .nav a:hover {
+            color: #fff;
+            background: #202020;
+        }
+
+        .nav a:hover::after {
+            width: 70%;
+        }
+
+        .nav a.active {
+            color: #fff;
+            background: #202020;
+        }
+
+        .nav a.active::after {
+            width: 70%;
+        }
+
+        /* Header buttons */
+
+        .header-actions {
+            display: flex;
+        }
+
+        .download-top {
+            min-width: 145px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(135deg, #ef233c, #c8102e);
+
+            color: #fff;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            transition: .2s;
+        }
+
+        .download-top:hover {
+            filter: brightness(1.12);
+        }
+
+        .download-top span {
+            margin-left: 8px;
+            font-size: 18px;
+        }
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        .mobile-button {
+            display: none;
+
+            margin-left: auto;
+
+            border: 0;
+            background: transparent;
+
+            color: #fff;
+
+            font-size: 27px;
+
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+
+            background: #111;
+
+            border-top: 1px solid #333;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+
+            padding: 15px 22px;
+
+            border-bottom: 1px solid #292929;
+
+            color: #ddd;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .mobile-menu a:hover {
+            color: #fff;
+            background: #222;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+
+            min-height: 330px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 75% 40%,
+                    rgba(239,35,60,.28),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    110deg,
+                    #090909,
+                    #171717 55%,
+                    #242424
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    120deg,
+                    transparent 0 45%,
+                    rgba(255,255,255,.025) 45.2%,
+                    transparent 45.5%
+                );
+
+            background-size: 140px 140px;
+
+            opacity: .5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            width: min(1200px, 92%);
+            margin: auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+
+            margin-bottom: 12px;
+            padding: 6px 12px;
+
+            color: #ff6676;
+
+            border: 1px solid rgba(239,35,60,.35);
+            background: rgba(239,35,60,.08);
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            color: #fff;
+
+            font-size: clamp(35px, 5vw, 58px);
+            line-height: 1.05;
+
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #ed1c24;
+        }
+
+        .hero p {
+            max-width: 580px;
+
+            margin-top: 15px;
+
+            color: #aaa;
+
+            font-size: 15px;
+        }
+
+        /* =========================================================
+           CONTENT
+        ========================================================= */
+
+        .content {
+            width: min(1200px, 92%);
+
+            margin: 0 auto;
+
+            padding: 48px 0 70px;
+        }
+
+        .page-title {
+            position: relative;
+
+            margin-bottom: 35px;
+            padding-bottom: 16px;
+
+            border-bottom: 1px solid #d5d5d5;
+        }
+
+        .page-title::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -1px;
+
+            width: 150px;
+            height: 3px;
+
+            background: #ed1c24;
+        }
+
+        .page-title h2 {
+            font-size: 28px;
+
+            color: #191919;
+
+            text-transform: uppercase;
+        }
+
+        .page-title p {
+            margin-top: 3px;
+
+            color: #888;
+
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           TABS
+        ========================================================= */
+
+        .tabs {
+            display: flex;
+            align-items: stretch;
+
+            margin-bottom: 30px;
+
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tab {
+            border: 0;
+
+            padding: 15px 28px;
+
+            background: #dedede;
+
+            color: #555;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .tab:hover {
+            background: #d3d3d3;
+        }
+
+        .tab.active {
+            background: #ed1c24;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+
+            animation: fadeIn .3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================================
+           DOWNLOAD CARD
+        ========================================================= */
+
+        .download-card {
+            padding: 32px;
+
+            background: #fff;
+
+            border: 1px solid #ddd;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,.05);
+        }
+
+        .download-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 25px;
+
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .download-card h3 {
+            color: #222;
+
+            font-size: 20px;
+        }
+
+        .download-card h3 span {
+            color: #ed1c24;
+        }
+
+        .download-card-info {
+            display: flex;
+            gap: 30px;
+
+            margin-top: 12px;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .download-card-info b {
+            color: #333;
+        }
+
+        .download-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-top: 25px;
+        }
+
+        .download-name {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .download-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #fff;
+
+            background: #ed1c24;
+
+            font-size: 24px;
+
+            border-radius: 4px;
+        }
+
+        .download-name strong {
+            display: block;
+
+            color: #333;
+
+            font-size: 15px;
+        }
+
+        .download-name small {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 160px;
+
+            padding: 13px 22px;
+
+            background: #ed1c24;
+
+            color: #fff;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            border-radius: 2px;
+
+            box-shadow:
+                0 5px 15px rgba(237,35,60,.18);
+
+            transition: .2s;
+        }
+
+        .download-button:hover {
+            background: #c8102e;
+            transform: translateY(-2px);
+        }
+
+        /* =========================================================
+           HARDWARE
+        ========================================================= */
+
+        .section-heading {
+            margin: 42px 0 15px;
+
+            color: #222;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .section-heading::before {
+            content: "";
+
+            display: inline-block;
+
+            width: 4px;
+            height: 21px;
+
+            margin-right: 10px;
+
+            vertical-align: -3px;
+
+            background: #ed1c24;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+
+            background: #fff;
+
+            border: 1px solid #ddd;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 760px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+
+            border: 1px solid #ddd;
+
+            text-align: left;
+
+            vertical-align: top;
+
+            font-size: 13px;
+        }
+
+        th {
+            background: #1b1b1b;
+
+            color: #fff;
+
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        td:first-child {
+            width: 20%;
+
+            color: #333;
+
+            font-weight: 800;
+
+            background: #f8f8f8;
+        }
+
+        tr:nth-child(even) td {
+            background: #fafafa;
+        }
+
+        td:first-child {
+            background: #f3f3f3;
+        }
+
+        ul.specs {
+            padding-left: 18px;
+        }
+
+        ul.specs li {
+            margin-bottom: 5px;
+        }
+
+        /* =========================================================
+           NOTES
+        ========================================================= */
+
+        .notes {
+            margin-top: 35px;
+
+            padding: 25px 28px;
+
+            background: #fff8f8;
+
+            border: 1px solid #f1cccc;
+
+            border-left: 4px solid #ed1c24;
+        }
+
+        .notes-title {
+            margin-bottom: 15px;
+
+            color: #d71920;
+
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .notes h4 {
+            margin-top: 15px;
+            margin-bottom: 5px;
+
+            color: #333;
+
+            font-size: 14px;
+        }
+
+        .notes p {
+            color: #666;
+
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           BACKUP LINKS
+        ========================================================= */
+
+        .backup-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .backup-item {
+            padding: 25px;
+
+            background: #fff;
+
+            border: 1px solid #ddd;
+
+            transition: .2s;
+        }
+
+        .backup-item:hover {
+            border-color: #ed1c24;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.06);
+        }
+
+        .backup-item h3 {
+            margin-bottom: 5px;
+
+            color: #333;
+
+            font-size: 16px;
+        }
+
+        .backup-item p {
+            margin-bottom: 18px;
+
+            color: #888;
+
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           GUIDE
+        ========================================================= */
+
+        .guide-box {
+            padding: 30px;
+
+            background: #fff;
+
+            border: 1px solid #ddd;
+        }
+
+        .guide-box h3 {
+            color: #222;
+            font-size: 20px;
+        }
+
+        .guide-box hr {
+            margin: 15px 0 25px;
+
+            border: 0;
+            border-top: 1px dashed #ccc;
+        }
+
+        .video {
+            position: relative;
+
+            width: 100%;
+            max-width: 850px;
+
+            aspect-ratio: 16 / 9;
+
+            margin: auto;
+
+            background: #111;
+        }
+
+        .video iframe {
+            width: 100%;
+            height: 100%;
+
+            border: 0;
+        }
+
+        .guide-link {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 12px 20px;
+
+            background: #222;
+
+            color: #fff;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition: .2s;
+        }
+
+        .guide-link:hover {
+            background: #ed1c24;
+        }
+
+        /* =========================================================
+           SUPPORT SIDEBAR
+        ========================================================= */
+
+        .support {
+            position: fixed;
+
+            left: 0;
+            top: 35%;
+
+            z-index: 900;
+
+            display: flex;
+            flex-direction: column;
+
+            background: #171717;
+
+            box-shadow:
+                3px 5px 20px rgba(0,0,0,.2);
+        }
+
+        .support a {
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #fff;
+
+            border-bottom: 1px solid #333;
+
+            font-size: 18px;
+
+            transition: .2s;
+        }
+
+        .support a:hover {
+            background: #ed1c24;
+            width: 58px;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #111;
+
+            color: #777;
+        }
+
+        .footer-main {
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+            padding: 45px 0;
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr 1fr;
+
+            gap: 40px;
+        }
+
+        .footer-logo {
+            margin-bottom: 12px;
+
+            color: #fff;
+
+            font-size: 23px;
+            font-weight: 900;
+        }
+
+        .footer-logo span {
+            color: #ed1c24;
+        }
+
+        .footer h4 {
+            margin-bottom: 12px;
+
+            color: #fff;
+
+            font-size: 13px;
+        }
+
+        .footer p,
+        .footer a {
+            font-size: 12px;
+        }
+
+        .footer a:hover {
+            color: #ed1c24;
+        }
+
+        .footer-bottom {
+            padding: 17px;
+
+            text-align: center;
+
+            background: #0a0a0a;
+
+            border-top: 1px solid #222;
+
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+            .nav a {
+                min-width: 85px;
+                padding: 0 8px;
+
+                font-size: 11px;
+            }
+
+            .logo {
+                width: 190px;
+                padding: 0 18px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .topbar {
+                display: none;
+            }
+
+            .header-inner {
+                height: 65px;
+            }
+
+            .logo {
+                width: auto;
+                flex: 1;
+
+                background: #111;
+            }
+
+            .nav,
+            .header-actions {
+                display: none;
+            }
+
+            .mobile-button {
+                display: block;
+            }
+
+            .hero {
+                min-height: 280px;
+            }
+
+            .support {
+                display: none;
+            }
+
+            .tabs {
+                display: none;
+            }
+
+            .download-card-header,
+            .download-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .download-button {
+                width: 100%;
+            }
+
+            .backup-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .content {
+                padding-top: 30px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .download-card {
+                padding: 20px;
+            }
+
+            .download-card-info {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .page-title h2 {
+                font-size: 22px;
+            }
+
+            .notes {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<div class="topbar">
+    <div class="topbar-inner">
+
+        <div class="brand-small">
+            GAME ONLINE
+        </div>
+
+        <div class="account">
+            <a href="#">ĐĂNG NHẬP</a>
+            <a href="#">ĐĂNG KÝ</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <a href="#" class="logo">
+            GAME<span>VN</span>
+            <small>ONLINE</small>
+        </a>
+
+        <nav class="nav">
+
+            <a href="#">TIN TỨC</a>
+
+            <a href="#">SỰ KIỆN / UPDATE</a>
+
+            <a href="#">ESPORTS</a>
+
+            <a href="#">CẨM NANG</a>
+
+            <a href="#">SHOP</a>
+
+            <a href="#">WEB-EVENTS</a>
+
+            <a href="#">CỘNG ĐỒNG</a>
+
+        </nav>
+
+        <div class="header-actions">
+
+            <a
+                href="#download"
+                class="download-top"
+            >
+                TẢI GAME
+                <span>↓</span>
+            </a>
+
+        </div>
+
+        <button
+            class="mobile-button"
+            id="mobileButton"
+            aria-label="Mở menu"
+        >
+            ☰
+        </button>
+
+    </div>
+
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+        <a href="#">TIN TỨC</a>
+        <a href="#">SỰ KIỆN / UPDATE</a>
+        <a href="#">ESPORTS</a>
+        <a href="#">CẨM NANG</a>
+        <a href="#">SHOP</a>
+        <a href="#">WEB-EVENTS</a>
+        <a href="#">CỘNG ĐỒNG</a>
+        <a href="#download">TẢI GAME</a>
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            OFFICIAL GAME DOWNLOAD
+        </div>
+
+        <h1>
+            TẢI GAME
+            <span>&amp; CÀI ĐẶT</span>
+        </h1>
+
+        <p>
+            Tải xuống phiên bản game mới nhất và bắt đầu
+            trải nghiệm ngay hôm nay.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SUPPORT
+========================================================= -->
+
+<div class="support">
+
+    <a href="#" title="Hỗ trợ">
+        ☎
+    </a>
+
+    <a href="#" title="Facebook">
+        f
+    </a>
+
+    <a href="#" title="Group">
+        👥
+    </a>
+
+    <a href="#" title="TikTok">
+        ♪
+    </a>
+
+    <a href="#" title="YouTube">
+        ▶
+    </a>
+
+    <a href="#" title="Discord">
+        ◎
+    </a>
+
+</div>
+
+
+<!-- =========================================================
+     CONTENT
+========================================================= -->
+
+<main
+    class="content"
+    id="download"
+>
+
+    <div class="page-title">
+
+        <h2>
+            TẢI GAME &amp; CÀI ĐẶT
+        </h2>
+
+        <p>
+            Chọn phiên bản bạn muốn tải xuống
+        </p>
+
+    </div>
+
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+        <button
+            class="tab active"
+            data-tab="download-tab"
+        >
+            TẢI GAME
+        </button>
+
+        <button
+            class="tab"
+            data-tab="backup-tab"
+        >
+            LINK DỰ PHÒNG
+        </button>
+
+        <button
+            class="tab"
+            data-tab="guide-tab"
+        >
+            HƯỚNG DẪN
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         DOWNLOAD TAB
+    ====================================================== -->
+
+    <section
+        class="tab-content active"
+        id="download-tab"
+    >
+
+        <div class="download-card">
+
+            <div class="download-card-header">
+
+                <div>
+
+                    <h3>
+                        BỘ CÀI
+                        <span>ĐẦY ĐỦ</span>
+                    </h3>
+
+                    <div class="download-card-info">
+
+                        <span>
+                            NGÀY PHÁT HÀNH:
+                            <b>29/09/2026</b>
+                        </span>
+
+                        <span>
+                            DUNG LƯỢNG:
+                            <b>10 GB</b>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="download-row">
+
+                <div class="download-name">
+
+                    <div class="download-icon">
+                        ↓
+                    </div>
+
+                    <div>
+                        <strong>
+                            Bộ cài game đầy đủ
+                        </strong>
+
+                        <small>
+                            Phiên bản mới nhất
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <!--
+                    ĐỔI href NÀY thành đường dẫn file
+                    download thực tế của bạn.
+                -->
+
+                <a
+                    href="/downloads/RedTeamLabPayload.exe"
+                    class="download-button"
+                    download
+                >
+                    TẢI NGAY &nbsp; ↓
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HARDWARE -->
+
+        <h3 class="section-heading">
+            YÊU CẦU PHẦN CỨNG
+        </h3>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Phần cứng</th>
+                        <th>Cấu hình tối thiểu</th>
+                        <th>Cấu hình đề nghị</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Chip xử lý (CPU)
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Intel Core 2 Duo trở lên</li>
+                                <li>AMD Athlon 64 X2 trở lên</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Intel Core i3 / i5 trở lên</li>
+                                <li>AMD Ryzen 3 / 5 trở lên</li>
+                            </ul>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Bộ nhớ RAM
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Từ 4 GB RAM</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Từ 8 GB RAM</li>
+                                <li>Khuyến nghị 16 GB RAM</li>
+                            </ul>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Card đồ họa
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>NVIDIA GT 520 trở lên</li>
+                                <li>AMD Radeon HD 6450 trở lên</li>
+                                <li>Intel HD Graphics 4000 trở lên</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>NVIDIA GT 630 trở lên</li>
+                                <li>AMD Radeon HD 6570 trở lên</li>
+                                <li>Intel UHD Graphics trở lên</li>
+                            </ul>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Dung lượng lưu trữ
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Trống tối thiểu 15 GB</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Trống tối thiểu 15 GB</li>
+                                <li>Khuyến nghị SSD</li>
+                            </ul>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Hệ điều hành
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Windows 10 64-bit trở lên</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Windows 10 / 11 64-bit</li>
+                            </ul>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Internet
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Kết nối Internet ổn định</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <ul class="specs">
+                                <li>Khuyến nghị kết nối Ethernet</li>
+                                <li>Tốc độ ổn định</li>
+                            </ul>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- NOTES -->
+
+        <div class="notes">
+
+            <div class="notes-title">
+                ⚠ LƯU Ý QUAN TRỌNG
+            </div>
+
+            <h4>
+                Đối với việc cài đặt
+            </h4>
+
+            <p>
+                Vui lòng đảm bảo máy tính còn đủ dung lượng
+                lưu trữ trước khi tiến hành cài đặt.
+                Khuyến nghị đóng các ứng dụng không cần thiết
+                trong quá trình cài đặt game.
+            </p>
+
+            <h4>
+                Đối với phiên bản Windows
+            </h4>
+
+            <p>
+                Sử dụng hệ điều hành Windows 64-bit được
+                cập nhật đầy đủ để có trải nghiệm ổn định nhất.
+            </p>
+
+            <h4>
+                Đường truyền
+            </h4>
+
+            <p>
+                Khuyến nghị sử dụng kết nối mạng ổn định
+                trong quá trình tải game để tránh lỗi
+                hoặc gián đoạn tải xuống.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BACKUP TAB
+    ====================================================== -->
+
+    <section
+        class="tab-content"
+        id="backup-tab"
+    >
+
+        <div class="backup-list">
+
+            <div class="backup-item">
+
+                <h3>
+                    LINK DỰ PHÒNG 01
+                </h3>
+
+                <p>
+                    Máy chủ tải xuống dự phòng.
+                </p>
+
+                <a
+                    href="#"
+                    class="download-button"
+                >
+                    TẢI NGAY ↓
+                </a>
+
+            </div>
+
+
+            <div class="backup-item">
+
+                <h3>
+                    LINK DỰ PHÒNG 02
+                </h3>
+
+                <p>
+                    Máy chủ tải xuống thay thế.
+                </p>
+
+                <a
+                    href="#"
+                    class="download-button"
+                >
+                    TẢI NGAY ↓
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GUIDE TAB
+    ====================================================== -->
+
+    <section
+        class="tab-content"
+        id="guide-tab"
+    >
+
+        <div class="guide-box">
+
+            <h3>
+                XEM VIDEO HƯỚNG DẪN CÀI ĐẶT
+            </h3>
+
+            <hr>
+
+            <div class="video">
+
+                <!--
+                    Thay VIDEO_ID bằng video YouTube của bạn.
+                -->
+
+                <iframe
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Hướng dẫn cài đặt game"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+
+            <a
+                href="#"
+                class="guide-link"
+                target="_blank"
+            >
+                XEM HƯỚNG DẪN CHI TIẾT →
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+        <div>
+
+            <div class="footer-logo">
+                GAME<span>VN</span>
+            </div>
+
+            <p>
+                Cổng thông tin chính thức của game.
+                Cập nhật tin tức, sự kiện và hỗ trợ
+                người chơi.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                LIÊN KẾT
+            </h4>
+
+            <p>
+                <a href="#">Trang chủ</a>
+            </p>
+
+            <p>
+                <a href="#">Tin tức</a>
+            </p>
+
+            <p>
+                <a href="#">Sự kiện</a>
+            </p>
+
+            <p>
+                <a href="#">Hỗ trợ</a>
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                CỘNG ĐỒNG
+            </h4>
+
+            <p>
+                <a href="#">Facebook</a>
+            </p>
+
+            <p>
+                <a href="#">YouTube</a>
+            </p>
+
+            <p>
+                <a href="#">Discord</a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 GAMEVN. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* Mobile menu */
+
+    const mobileButton =
+        document.getElementById("mobileButton");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+    mobileButton.addEventListener("click", function () {
+
+        mobileMenu.classList.toggle("open");
+
+    });
+
+
+    /* Tabs */
+
+    const tabs =
+        document.querySelectorAll(".tab");
+
+    const tabContents =
+        document.querySelectorAll(".tab-content");
+
+
+    tabs.forEach(function (tab) {
+
+        tab.addEventListener("click", function () {
+
+            const target =
+                tab.getAttribute("data-tab");
+
+
+            tabs.forEach(function (item) {
+
+                item.classList.remove("active");
+
+            });
+
+
+            tabContents.forEach(function (content) {
+
+                content.classList.remove("active");
+
+            });
+
+
+            tab.classList.add("active");
+
+
+            document
+                .getElementById(target)
+                .classList.add("active");
+
+        });
+
+    });
+
+
+    /* Close mobile menu after clicking */
+
+    document
+        .querySelectorAll(".mobile-menu a")
+        .forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                mobileMenu.classList.remove("open");
+
+            });
+
+        });
+
+</script>
+
+</body>
+</html>
